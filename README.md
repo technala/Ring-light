@@ -53,7 +53,7 @@ A creative exploration project combining 3D printing, web technology, and microc
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/wifi-led-ring.git
+   git clone https://github.com/technala/Ring-light.git
    cd wifi-led-ring
    ```
 
