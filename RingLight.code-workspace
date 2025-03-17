@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../GitHub/RingLight"
+		},
+		{
+			"name": "Ring light",
+			"path": "."
+		},
+		{
+			"name": "NewLight",
+			"path": "../NewLight"
+		}
+	],
+	"settings": {}
+}
