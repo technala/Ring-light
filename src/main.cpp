@@ -32,8 +32,8 @@ void handleRoot() {
   
   // Mode selection buttons
   html += "<p>Mode: ";
-  html += "<a href='/mode/sequence'><button style='background-color: " + String(isSequenceMode ? "#2196F3" : "#808080") + "; color: white;'>Sequence Mode</button></a>";
-  html += "<a href='/mode/all'><button style='background-color: " + String(!isSequenceMode ? "#2196F3" : "#808080") + "; color: white;'>All LEDs Mode</button></a>";
+  html += "<a href='/sequence'><button style='background-color: " + String(isSequenceMode ? "#2196F3" : "#808080") + "; color: white;'>Sequence Mode</button></a>";
+  html += "<a href='/all'><button style='background-color: " + String(!isSequenceMode ? "#2196F3" : "#808080") + "; color: white;'>All LEDs Mode</button></a>";
   html += "</p>";
   
   // Start/Stop buttons
@@ -53,8 +53,7 @@ void handleRoot() {
   server.send(200, "text/html", html);
 }
 
-void handleModeChange() {
-  String mode = server.pathArg(0);
+void handleModeChange(String mode) {
   isSequenceMode = (mode == "sequence");
   // When changing modes, stop the current operation
   isRunning = false;
@@ -118,7 +117,8 @@ void setup() {
 
   // Setup web server routes
   server.on("/", handleRoot);
-  server.on("/mode/:mode", handleModeChange);  // New route for mode changes
+  server.on("/sequence", []() { handleModeChange("sequence"); });
+  server.on("/all", []() { handleModeChange("all"); });
   server.on("/start", handleStart);
   server.on("/stop", handleStop);
   server.on("/setdelay", handleSetDelay);
